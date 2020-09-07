@@ -10,7 +10,7 @@ import com.mynamaneet.dolmodloader.exceptions.InvalidTweeFileException;
 
 public class ExampleMod extends Mod {
     public ExampleMod(){
-        super("Example Mod", "1.0.5", "mynamaneet");
+        super("Example Mod", "1.0.7", "mynamaneet");
     }
 
     public static void main() {
@@ -22,6 +22,7 @@ public class ExampleMod extends Mod {
         try{
             ArrayList<String> message = new ArrayList<>();
             message.add("ExampleMod Test");
+            message.add("<br>");
             message.add("ExampleMod 2nd Test");
             ModLoader.addPassageText(message, ModLoader.getDolPassage(ModLoader.getTweeFile(ModLoader.getDolLocation("loc-home"), "main"), "Bedroom"));
         }catch(InvalidPassageException|InvalidLocationException|InvalidTweeFileException ex){
