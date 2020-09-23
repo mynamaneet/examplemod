@@ -25,6 +25,9 @@ public class ExampleMod extends Mod {
             message.add("<br>");
             message.add("ExampleMod 2nd Test");
             ModLoader.addPassageText(message, ModLoader.getDolPassage(ModLoader.getTweeFile(ModLoader.getDolLocation("loc-home"), "main"), "Bedroom"));
+            message.clear();
+            message.add("Urmomgay");
+            ModLoader.addPassageText(message, ModLoader.getDolPassage(ModLoader.getTweeFile(ModLoader.getDolLocation("loc-home"), "main"), "Bedroom"));
         }catch(InvalidPassageException|InvalidLocationException|InvalidTweeFileException ex){
             ModLoader.logMessage(ex.getMessage());
         }
