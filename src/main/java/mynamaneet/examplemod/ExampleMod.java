@@ -37,16 +37,14 @@ public class ExampleMod extends Mod {
 
             message.clear();
 
-            // BufferedReader r = new BufferedReader(ModLoader.getResource(this, "important.txt"));
-            // String line;
-            // while((line=r.readLine()) != null){
-            //     message.add(line);
-            // }
-            // r.close();
+            message = ModLoader.getTextResource(this, "important.txt");
 
-            message = ModLoader.getResource(this, "important.txt");
+            ModLoader.overwritePassage(bedroom, message);
 
-            ModLoader.addPassageText(message, bedroom);
+            message.clear();
+            message.add("This is not in the important folder lol");
+
+            ModLoader.overwritePassage(bedroom, message);
         } catch (InvalidPassageException | InvalidLocationException | InvalidTweeFileException ex) {
             ModLoader.logMessage(ex.getMessage());
         }
