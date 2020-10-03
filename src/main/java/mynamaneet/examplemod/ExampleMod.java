@@ -1,7 +1,5 @@
 package mynamaneet.examplemod;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.mynamaneet.dolmodloader.*;
@@ -29,22 +27,9 @@ public class ExampleMod extends Mod {
                     "main"), 
             "Bedroom");
 
-            ArrayList<String> message = new ArrayList<>();
-            message.add("ExampleMod Test");
-            message.add("<br>");
-            message.add("ExampleMod 2nd Test");
-            ModLoader.addPassageText(message, bedroom);
-
-            message.clear();
-
-            message = ModLoader.getTextResource(this, "important.txt");
-
+            ArrayList<String> message = ModLoader.getTextResource(this, "important.txt");
             ModLoader.overwritePassage(bedroom, message);
-
-            message.clear();
-            message.add("This is not in the important folder lol");
-
-            ModLoader.overwritePassage(bedroom, message);
+            
         } catch (InvalidPassageException | InvalidLocationException | InvalidTweeFileException ex) {
             ModLoader.logMessage(ex.getMessage());
         }
