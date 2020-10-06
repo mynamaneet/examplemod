@@ -24,17 +24,10 @@ public class ExampleMod extends Mod {
     @Override
     public void modApp() {
         try {
-            DolSubfolder subfolder = ModLoader.getDolSubfolder("overworld-town");
-            DolLocation location = ModLoader.getDolLocation("loc-cafe");
-            TweeFile twee = ModLoader.getTweeFile(location, "chef.twee");
-            DolPassage passage = ModLoader.getDolPassage("Bedroom");
+            ModLoader.addPassageText("I'm right outside lmao", ModLoader.getDolPassage("Bedroom"), 3);
+            ModLoader.addPassageText("This shit happen after tho", ModLoader.getDolPassage("Bedroom"), 3);
 
-            ModLoader.logMessage("SUBFOLDER - "+subfolder.getDirectoryPath().getAbsolutePath());
-            ModLoader.logMessage("LOCATION - "+location.getDirectoryPath().getAbsolutePath());
-            ModLoader.logMessage("TWEE - "+twee.getDirectoryPath().getAbsolutePath());
-            ModLoader.logMessage("PASSAGE - "+passage.getTweeFile().getAbsolutePath());
-
-        } catch (InvalidLocationException | InvalidTweeFileException | InvalidSubfolderException | InvalidPassageException ex) {
+        } catch (InvalidPassageException ex) {
             ModLoader.logMessage(ex.getMessage());
         }
 	}
