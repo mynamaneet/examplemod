@@ -3,14 +3,8 @@ package mynamaneet.examplemod;
 import java.util.ArrayList;
 
 import com.mynamaneet.dolmodloader.*;
-import com.mynamaneet.dolmodloader.exceptions.InvalidLocationException;
-import com.mynamaneet.dolmodloader.exceptions.InvalidPassageException;
-import com.mynamaneet.dolmodloader.exceptions.InvalidSubfolderException;
-import com.mynamaneet.dolmodloader.exceptions.InvalidTweeFileException;
-import com.mynamaneet.dolmodloader.file_classes.DolLocation;
-import com.mynamaneet.dolmodloader.file_classes.DolPassage;
-import com.mynamaneet.dolmodloader.file_classes.DolSubfolder;
-import com.mynamaneet.dolmodloader.file_classes.TweeFile;
+import com.mynamaneet.dolmodloader.exceptions.*;
+import com.mynamaneet.dolmodloader.file_classes.*;
 
 public class ExampleMod extends Mod {
     public ExampleMod() {
@@ -22,13 +16,18 @@ public class ExampleMod extends Mod {
     }
 
     @Override
-    public void modApp() {
-        try {
-            ModLoader.addPassageText("I'm right outside lmao", ModLoader.getDolPassage("Bedroom"), 3);
-            ModLoader.addPassageText("This shit happen after tho", ModLoader.getDolPassage("Bedroom"), 3);
+    public void modApp(){
+        CustomSubfolder subfolder = ModLoader.createCustomSubfolder(this, "example-mod");
+        CustomLocation location = ModLoader.createCustomLocation(this, "test", subfolder);
+        CustomTweeFile twee = ModLoader.createCustomTweeFile(this, "main", location);
+        CustomPassage passage = ModLoader.createCustomPassage(this, "Big bad bad bad", twee);
 
-        } catch (InvalidPassageException ex) {
-            ModLoader.logMessage(ex.getMessage());
+        try{
+            ModLoader.addPassageText("<<link [[Test Mod Spot|Big bad bad bad]]>><</link>>", ModLoader.getDolPassage("Bedroom"), 143);
+
+            ModLoader.addPassageText(ModLoader.getTextResource(this, "important.txt"), passage, 1);
+        } catch(InvalidPassageException e){
+            ModLoader.logMessage("ERROR");
         }
 	}
 }
