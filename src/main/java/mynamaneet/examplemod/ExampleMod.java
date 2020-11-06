@@ -8,7 +8,7 @@ import com.mynamaneet.dolmodloader.file_classes.*;
 
 public class ExampleMod extends Mod {
     public ExampleMod() {
-        super("Example Mod", "1.0.7", "mynamaneet");
+        super("Example Mod", "1.0.8", "mynamaneet");
     }
 
     public static void main() {
@@ -23,9 +23,11 @@ public class ExampleMod extends Mod {
         CustomPassage passage = ModLoader.createCustomPassage(this, "Big bad bad bad", twee);
 
         try{
-            ModLoader.addPassageText("<<link [[Test Mod Spot|Big bad bad bad]]>><</link>>", ModLoader.getDolPassage("Bedroom"), 143);
+            //ModLoader.addPassageText("<<link [[Test Mod Spot|Big bad bad bad]]>><</link>>", ModLoader.getDolPassage("Bedroom"), 143);
+            ModLoader.addPassageText(ModLoader.getTextResource(this, "important.txt"), ModLoader.getDolPassage("Bedroom"), 143, this);
 
-            ModLoader.addPassageText(ModLoader.getTextResource(this, "important.txt"), passage, 1);
+
+            ModLoader.addPassageText(ModLoader.getTextResource(this, "important.txt"), passage, 1, this);
         } catch(InvalidPassageException e){
             ModLoader.logMessage("ERROR");
         }
