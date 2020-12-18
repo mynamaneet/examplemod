@@ -28,6 +28,9 @@ public class ExampleMod extends Mod {
 
 
             ModLoader.addPassageText(ModLoader.getTextResource(this, "important.txt"), passage, 1, this);
+
+            ModLoader.removePassageLine(ModLoader.getDolPassage("Bedroom"), 5);
+            ModLoader.removePassageLine(ModLoader.getDolPassage("Bedroom"), 1, "Example Mod");
         } catch(InvalidPassageException e){
             ModLoader.logMessage("ERROR");
         }
