@@ -21,6 +21,7 @@ public class ExampleMod extends Mod {
         CustomLocation location = ModLoader.createCustomLocation(this, "test", subfolder);
         CustomTweeFile twee = ModLoader.createCustomTweeFile(this, "main", location);
         CustomPassage passage = ModLoader.createCustomPassage(this, "Big bad bad bad", twee);
+        CustomTweeVariable variable = ModLoader.createCustomTweeVariable(this, "supervariableyo", "taco");
 
         try{
             //ModLoader.addPassageText("<<link [[Test Mod Spot|Big bad bad bad]]>><</link>>", ModLoader.getDolPassage("Bedroom"), 143);
